@@ -3,6 +3,7 @@ package com.hemebiotech.analytics;
 import java.io.*;
 import java.security.KeyStore;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AnalyticsCounter {
@@ -70,10 +71,12 @@ public class AnalyticsCounter {
 
 			System.out.println("\nLe fichier comporte donc : " + numberOfLines + " lignes.");
 
-
-			// Affichage du contenu de la liste
-			System.out.println("\nAffichage du contenu de la liste");
+			// Affichage du contenu de la liste + tri des données par ordre alphabétique
+			System.out.println("\nAffichage du contenu de la liste triée");
 			System.out.println("\nLa liste comporte : " + symptomsArrayList.size() + " lignes.");
+
+			Collections.sort(symptomsArrayList);
+
 			int numberOfItems = 0;
 			for (Item item : symptomsArrayList) {
 				numberOfItems++;
@@ -101,42 +104,4 @@ public class AnalyticsCounter {
 			e.printStackTrace();
 		}
 	}
-
-		// int size() a la fin pour connaitre la taille de la liste finale
-
-		/*
-
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("Project02Eclipse/symptoms.txt"));
-		String line = reader.readLine();
-
-		int i = 0;	// set i to 0
-		// int headCount = 0;	// counts headaches
-		while (line != null) {
-			i++;	// increment i
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headacheCount++;
-				System.out.println("number of headaches: " + headacheCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-				System.out.println("number of rush: " + rashCount);
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-				System.out.println("number of pupils: " + pupilCount);
-			}
-
-			line = reader.readLine();	// get another symptom
-		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
-
-		 */
 }

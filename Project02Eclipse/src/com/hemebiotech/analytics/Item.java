@@ -1,6 +1,6 @@
 package com.hemebiotech.analytics;
 
-public class Item {
+public class Item implements Comparable<Item> {
 
     protected String symptom;
     protected int quantity;
@@ -25,6 +25,12 @@ public class Item {
         this.quantity = quantity;
     }
 
-
-
+    @Override
+    public int compareTo(Item o) {
+        return String.CASE_INSENSITIVE_ORDER.compare(this.symptom, o.getSymptom());
+    }
 }
+
+//public class SortedItem implements Comparable<Item> {
+
+
