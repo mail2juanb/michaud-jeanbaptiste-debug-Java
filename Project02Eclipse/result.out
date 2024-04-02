@@ -1,0 +1,24 @@
+
+Symptom FEVER = 7
+Symptom DIALATED PUPILS = 4
+Symptom DRY MOUTH = 8
+Symptom INFLAMATION = 7
+Symptom TREMOR = 4
+Symptom STOMACH PAIN = 3
+Symptom HIGH BLOOD PRESSURE = 10
+Symptom STIFF NECK = 4
+Symptom COUGH = 6
+Symptom INSOMNIA = 4
+Symptom HEADACHE = 3
+Symptom CONSTRICTED PUPILS = 3
+Symptom NAUSEA = 5
+Symptom SHORTNESS OF BREATH = 3
+Symptom BLURRED VISION = 5
+Symptom DIZZINESS = 5
+Symptom LOW BLOOD PRESSURE = 4
+Symptom ARRHYTHMIAS = 3
+Symptom ANXIETY = 5
+Symptom WATER RETENTION = 1
+Symptom BLINDNESS = 1
+Symptom RAPID HEART RATE = 1
+Symptom RASH = 4
