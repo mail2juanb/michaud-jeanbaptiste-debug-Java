@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+// coucou
+
 public class AnalyticsCounter {
 	private static int headacheCount = 0;	// initialize to 0
 	private static int rashCount = 0;		// initialize to 0
