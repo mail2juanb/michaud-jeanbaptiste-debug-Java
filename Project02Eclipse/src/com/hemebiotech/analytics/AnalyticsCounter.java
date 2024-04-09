@@ -79,12 +79,6 @@ public class AnalyticsCounter {
 
 		// Reste à écrire le tout sur un fichier txt
 
-		// Déclaration du chemin de sortie du fichier
-		filepath = "Project02Eclipse/result.txt";
-
-		// Instantiation de la classe ReadSymptomDataFromFile
-		ReadSymptomDataFromFile r =	new ReadSymptomDataFromFile(filepath);
-
 		/*
 		// first get input
 		BufferedReader reader = new BufferedReader (new FileReader("Project02Eclipse/symptoms.txt"));
