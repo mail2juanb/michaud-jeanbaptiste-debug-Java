@@ -1,20 +1,21 @@
 package com.hemebiotech.analytics;
 
 import java.util.List;
+/*
+Le nom de l'interface devrait être simplement SymptomReader Le I est superflu
+ */
 
 /**
  * Anything that will read symptom data from a source
- * The important part is, the return value from the operation, which is a list of strings,
- * that may contain many duplications
- * 
- * The implementation does not need to order the list
- * 
+ *
+ * @author Jb Michaud - mail2juanb@yahoo.fr
+ * @return a raw listing of all Symptoms obtained from a data source, duplicates are possible/probable, no sort.
+ * If no data is available, return an empty List.
+ * @since 1.0
+ * @version 1.0
  */
+// Le return est-il au bon endroit ? 0 return dans le coin !
 public interface ISymptomReader {
-	/**
-	 * If no data is available, return an empty List
-	 * 
-	 * @return a raw listing of all Symptoms obtained from a data source, duplicates are possible/probable
-	 */
-	List<String> GetSymptoms ();
+    // Faut-il ajouter ici de la javadoc ? c'est une méthode ?
+    List<String> getSymptoms();
 }

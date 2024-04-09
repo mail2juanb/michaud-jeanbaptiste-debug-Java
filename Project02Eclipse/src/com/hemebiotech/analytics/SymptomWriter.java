@@ -1,4 +1,4 @@
 package com.hemebiotech.analytics;
 
-public interface ISymptomWriter {
+public interface SymptomWriter {
 }
