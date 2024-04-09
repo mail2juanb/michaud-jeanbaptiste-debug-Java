@@ -1,6 +1,10 @@
 package com.hemebiotech.analytics;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +37,7 @@ Mise en œuvre simple par force brute ??
 
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
-	private String filepath;
-	private File file;
+	private final File file;
 
 	/**
 	 * Register a File with filepath String, independently of the OS.
@@ -44,10 +47,12 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	public ReadSymptomDataFromFile(String filepath) {
 		// pourquoi on ne met pas void sur la méthode vu qu'elle ne revoi rien. Elle ne fait que remplir la variable file.
+		// Il ne devrait pas y avoir de majuscule au début du nom de la méthode ReadSymptomDataFromFile
+		// Il faudrait trouver un nom plus adéquat non ? Cette méthode fourni une variable File c'est tout
 
 		// La classe File permet de déclarer un chemin de fichier indépendamment du systeme d'exploitation
 		File file = new File(filepath);
-		System.out.println("ReadSymptomDataFromFile(String \"" + file.toString() + "\") --- déclenché");
+		System.out.println("ReadSymptomDataFromFile(String \"" + file + "\") --- déclenché");
 
 		this.file = file;
 		// la variable privée file est remplie
@@ -66,7 +71,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 */
 	public List<String> getSymptoms() {
 		System.out.println("getSymptoms() --- déclenché");
-		ArrayList<String> result = new ArrayList<String>();
+
+		ArrayList<String> result = new ArrayList<>();
 
 		// La gestion des erreurs du remplissage du chemin d'accès du fichier est dans le try catch.
 		// Pas besoin de mettre un if, c'est le boulot du try catch

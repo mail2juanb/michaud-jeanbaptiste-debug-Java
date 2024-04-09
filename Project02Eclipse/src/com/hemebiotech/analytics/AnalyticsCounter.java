@@ -1,5 +1,7 @@
 package com.hemebiotech.analytics;
 
+import java.util.SortedMap;
+import java.util.TreeMap;
 // Inutile ici
 //import java.io.BufferedReader;
 //import java.io.File;
@@ -9,16 +11,14 @@ package com.hemebiotech.analytics;
 //TODO Revoir le nom des éléments :
 // - Mauvais nommage. Je propose de renommer ISymptomReader en SymptomReader.
 // - Et donc la class SymptomReaderDataFromFile.
-// TODO Remplacer le nom des variables/objets :
+//TODO Remplacer le nom des variables/objets :
 //  - r : ReadSymptomDataFromFile
-//  - s : SortedMap
+//  - s : SortedMap (TreeMap)
 //  - v : variable de stockage
-// TODO Supprimer les println
-// TODO Supprimer les commentaires
+//TODO Supprimer les println
+//TODO Supprimer les commentaires
 
 
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 public class AnalyticsCounter {
 
@@ -28,7 +28,7 @@ public class AnalyticsCounter {
 	private static int pupilCount = 0;		// initialize to 0
 	*/
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 
 		// initialiser les 3 classes
 		// créer liste
@@ -54,7 +54,7 @@ public class AnalyticsCounter {
 		// Instantiation de la classe TreeMap qui implémente l'interface SortedMap
 		SortedMap<String, Integer> s = new TreeMap<>();
 
-		// Intégration des données de la liste récupérés avec le fichier source
+		// Intégration des données de la liste (récupérés avec le fichier source) dans une collection de type TreeMap.
 		for (String symptom : r.getSymptoms()) {
 			int v = 1;
 			// Vérifie si la clef spécifiée existe ou non
@@ -64,7 +64,7 @@ public class AnalyticsCounter {
 				v = s.get(symptom);
 				System.out.println("La clef : " + symptom + " avait pour valeur : " + v);
 				// On ajoute la nouvelle valeur dans la collection
-				s.put(symptom, v += 1);
+				s.put(symptom, v + 1);
 			} else {
 				System.out.println("La clef : " + symptom + " n'est pas déjà présente");
 				// On ajoute la nouvelle clef avec la valeur par defaut 1
@@ -73,42 +73,19 @@ public class AnalyticsCounter {
 			System.out.println("La clef : " + symptom + " a pour valeur : " + s.get(symptom));
 		}
 		// Affichage des clef, valeur de la collection
-		System.out.println(s);
+		System.out.println("\n" + s);
 
 		// On obtient donc bien une liste classée (alphabétiquement) du nombre d'occurence des symptoms contenus dans la liste du fichier source.
 
 		// Reste à écrire le tout sur un fichier txt
 
-		/*
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("Project02Eclipse/symptoms.txt"));
-		String line = reader.readLine();
+		// Déclaration du chemin de destination du fichier
+		filepath = "Project02Eclipse/result.txt";
 
-		int i = 0;
-		int headacheCount = 0;
-		while (line != null) {
-			i++;
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headacheCount++;
-				System.out.println("number of headaches: " + headacheCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
+		// Instantiation de la classe WriterDataToFile
+		WriterDataToFile w = new WriterDataToFile(filepath);
 
-			line = reader.readLine();
-		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
-		 */
+		// Ecriture sur le fichier de sortie
+		w.writeToFile(s);
 	}
 }
