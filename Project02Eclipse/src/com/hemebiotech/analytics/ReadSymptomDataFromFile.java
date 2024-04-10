@@ -1,8 +1,7 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,32 +10,38 @@ import java.util.List;
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
-	private String filepath;
-	
+	private final File file;
+
 	/**
 	 * @param filepath a full or partial path to file with symptom strings in it, one per line
 	 */
-	public ReadSymptomDataFromFile (String filepath) {this.filepath = filepath;}
+	public ReadSymptomDataFromFile (String filepath) {
+
+        file = new File(filepath);
+    }
 
 	public List<String> getSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
-		
-		if (filepath != null) {
-			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
-				String line = reader.readLine();
-				
-				while (line != null) {
-					result.add(line);
-					line = reader.readLine();
-				}
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+
+		ArrayList<String> result = new ArrayList<>();
+
+		try {
+			BufferedReader reader = new BufferedReader (new FileReader(file));		// FileNotFoundException
+			String line = reader.readLine();										// IOException
+			while (line != null) {
+				result.add(line);
+				line = reader.readLine();
 			}
-		}
+			reader.close();
+		} catch (FileNotFoundException e) {
+            System.err.println("FileNotFoundException : File not found");
+		} catch (IOException e) {
+            System.err.println("IOException : Unable to read file content");
+        }
+
+        if (result.isEmpty()) {														// Only notice to user
+            System.err.println("File is empty");
+        }
 
 		return result;
 	}
-
 }
