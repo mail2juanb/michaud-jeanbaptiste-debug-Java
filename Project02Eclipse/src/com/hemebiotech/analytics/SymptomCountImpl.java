@@ -8,7 +8,7 @@ import java.util.TreeMap;
  * Count occurrences of each symptom retrieved from the list
  * @author Hemebiotech - Jb Michaud - mail2juanb@yahoo.fr
  */
-public class CountSymptomsImpl implements CountSymptoms {
+public class SymptomCountImpl implements SymptomCount {
 
     /**
      * Register each symptom from the list (no double entries), Counts the number of occurrences

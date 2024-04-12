@@ -17,11 +17,11 @@ public class AnalyticsApp {
 	public static void main(String[] args) {
 
         final SymptomReader readSymptomDataFromFile = new SymptomReaderImpl(READ_FILEPATH);
-        final CountSymptoms countSymptoms = new CountSymptomsImpl();
+        final SymptomCount symptomCount = new SymptomCountImpl();
         final SymptomWriter writeSymptomDataToFile = new SymptomWriterImpl(WRITE_FILEPATH);
 
         final List<String> symptomList = readSymptomDataFromFile.getSymptoms();
-        final Map<String, Integer> sortedMap = countSymptoms.countSymptoms(symptomList);
+        final Map<String, Integer> sortedMap = symptomCount.countSymptoms(symptomList);
         writeSymptomDataToFile.writeSymptoms(sortedMap);
     }
 }

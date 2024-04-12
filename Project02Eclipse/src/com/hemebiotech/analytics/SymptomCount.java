@@ -9,7 +9,7 @@ import java.util.Map;
  * @author Hemebiotech - Jb Michaud - mail2juanb@yahoo.fr
  */
 @FunctionalInterface
-public interface CountSymptoms {
+public interface SymptomCount {
 
     Map<String, Integer> countSymptoms(List<String> symptoms);
 }
